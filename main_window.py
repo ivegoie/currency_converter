@@ -14,7 +14,7 @@ class MainWindow(QMainWindow, Ui_MainWindow):
         
         API_KEY = os.getenv("API_KEY")
         
-        API_URL = f"http://api.exchangeratesapi.io/v1/latest?access_key={API_KEY}"
+        API_URL = f"https://api.freecurrencyapi.com/v1/latest?apikey={API_KEY}"
         self.response = requests.get(API_URL)
         self.currency_info = self.response.json()
         print(self.currency_info)
