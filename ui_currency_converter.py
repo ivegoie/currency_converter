@@ -24,10 +24,27 @@ class Ui_MainWindow(object):
         if not MainWindow.objectName():
             MainWindow.setObjectName(u"MainWindow")
         MainWindow.resize(319, 423)
-        MainWindow.setStyleSheet(u"margin-left: 10px;\n"
-"margin-right: 10px;")
+        MainWindow.setStyleSheet(u"QComboBox { \n"
+"	border: 1px solid rgb(152, 152, 157);\n"
+"	border-radius: 5px;\n"
+"	background: transparent;\n"
+"	height: 40px;\n"
+"	padding-left: 10px;\n"
+"}\n"
+"\n"
+"QWidget {\n"
+"	margin-left: 10px;\n"
+"	margin-right: 10px;\n"
+"}\n"
+"\n"
+"\n"
+"\n"
+"\n"
+"\n"
+"")
         self.centralwidget = QWidget(MainWindow)
         self.centralwidget.setObjectName(u"centralwidget")
+        self.centralwidget.setStyleSheet(u"")
         self.verticalLayout = QVBoxLayout(self.centralwidget)
         self.verticalLayout.setObjectName(u"verticalLayout")
         self.exchange_v_layout = QVBoxLayout()
@@ -72,6 +89,7 @@ class Ui_MainWindow(object):
         self.amount_label.setSizePolicy(sizePolicy)
         font2 = QFont()
         font2.setFamilies([u"Avenir"])
+        font2.setPointSize(12)
         self.amount_label.setFont(font2)
 
         self.amount_layout.addWidget(self.amount_label)
@@ -132,13 +150,12 @@ class Ui_MainWindow(object):
         self.combo_box_layout.setObjectName(u"combo_box_layout")
         self.combo_from = QComboBox(self.centralwidget)
         self.combo_from.setObjectName(u"combo_from")
-        self.combo_from.setFont(font2)
+        font4 = QFont()
+        font4.setFamilies([u"Avenir"])
+        self.combo_from.setFont(font4)
         self.combo_from.setCursor(QCursor(Qt.PointingHandCursor))
-        self.combo_from.setStyleSheet(u"border: 1px solid rgb(152, 152, 157);\n"
-"border-radius: 5px;\n"
-"background: transparent;\n"
-"height: 40px;\n"
-"")
+        self.combo_from.setStyleSheet(u"")
+        self.combo_from.setMaxCount(50)
 
         self.combo_box_layout.addWidget(self.combo_from)
 
@@ -148,12 +165,10 @@ class Ui_MainWindow(object):
 
         self.combo_to = QComboBox(self.centralwidget)
         self.combo_to.setObjectName(u"combo_to")
-        self.combo_to.setFont(font2)
+        self.combo_to.setFont(font4)
         self.combo_to.setCursor(QCursor(Qt.PointingHandCursor))
-        self.combo_to.setStyleSheet(u"border: 1px solid rgb(152, 152, 157);\n"
-"border-radius: 5px;\n"
-"background: transparent;\n"
-"height: 40px;")
+        self.combo_to.setStyleSheet(u"")
+        self.combo_to.setMaxCount(50)
 
         self.combo_box_layout.addWidget(self.combo_to)
 
@@ -166,21 +181,21 @@ class Ui_MainWindow(object):
 
         self.verticalLayout.addLayout(self.amount_layout)
 
-        self.conver_button = QPushButton(self.centralwidget)
-        self.conver_button.setObjectName(u"conver_button")
-        font4 = QFont()
-        font4.setFamilies([u"Avenir"])
-        font4.setPointSize(18)
-        font4.setBold(True)
-        self.conver_button.setFont(font4)
-        self.conver_button.setCursor(QCursor(Qt.PointingHandCursor))
-        self.conver_button.setStyleSheet(u"border: none;\n"
+        self.convert_button = QPushButton(self.centralwidget)
+        self.convert_button.setObjectName(u"convert_button")
+        font5 = QFont()
+        font5.setFamilies([u"Avenir"])
+        font5.setPointSize(18)
+        font5.setBold(True)
+        self.convert_button.setFont(font5)
+        self.convert_button.setCursor(QCursor(Qt.PointingHandCursor))
+        self.convert_button.setStyleSheet(u"border: none;\n"
 "border-radius: 5px;\n"
 "background: rgb(10, 132, 255);\n"
 "color: white;\n"
 "height: 35px;")
 
-        self.verticalLayout.addWidget(self.conver_button)
+        self.verticalLayout.addWidget(self.convert_button)
 
         self.verticalSpacer_2 = QSpacerItem(20, 20, QSizePolicy.Minimum, QSizePolicy.Fixed)
 
@@ -200,13 +215,13 @@ class Ui_MainWindow(object):
     # setupUi
 
     def retranslateUi(self, MainWindow):
-        MainWindow.setWindowTitle(QCoreApplication.translate("MainWindow", u"MainWindow", None))
+        MainWindow.setWindowTitle(QCoreApplication.translate("MainWindow", u"Currency Exchange", None))
         self.exchange_rate_label.setText(QCoreApplication.translate("MainWindow", u"Exchange Rate", None))
         self.exchange_rate.setText(QCoreApplication.translate("MainWindow", u"$27.77", None))
         self.amount_label.setText(QCoreApplication.translate("MainWindow", u"Amount", None))
         self.amount_line_edit.setText(QCoreApplication.translate("MainWindow", u"10000", None))
         self.from_label.setText(QCoreApplication.translate("MainWindow", u"From", None))
         self.to_label.setText(QCoreApplication.translate("MainWindow", u"To", None))
-        self.conver_button.setText(QCoreApplication.translate("MainWindow", u"CONVERT", None))
+        self.convert_button.setText(QCoreApplication.translate("MainWindow", u"CONVERT", None))
     # retranslateUi
 

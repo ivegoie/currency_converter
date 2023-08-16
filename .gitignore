@@ -174,3 +174,4 @@ poetry.toml
 pyrightconfig.json
 currency_converter.ui
 .DS_Store
+currency_converter_ui.py
