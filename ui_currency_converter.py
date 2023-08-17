@@ -24,7 +24,12 @@ class Ui_MainWindow(object):
         if not MainWindow.objectName():
             MainWindow.setObjectName(u"MainWindow")
         MainWindow.resize(319, 423)
-        MainWindow.setStyleSheet(u"QComboBox { \n"
+        MainWindow.setStyleSheet(u"QWidget {\n"
+"	margin-left: 10px;\n"
+"	margin-right: 10px;\n"
+"}\n"
+"\n"
+"QComboBox { \n"
 "	border: 1px solid rgb(152, 152, 157);\n"
 "	border-radius: 5px;\n"
 "	background: transparent;\n"
@@ -32,13 +37,13 @@ class Ui_MainWindow(object):
 "	padding-left: 10px;\n"
 "}\n"
 "\n"
-"QWidget {\n"
-"	margin-left: 10px;\n"
-"	margin-right: 10px;\n"
+"QPushButton {\n"
+"	border: none;\n"
+"	border-radius: 5px;\n"
+"	background: rgb(10, 132, 255);\n"
+"	color: white;\n"
+"	height: 40px;\n"
 "}\n"
-"\n"
-"\n"
-"\n"
 "\n"
 "\n"
 "")
@@ -65,18 +70,18 @@ class Ui_MainWindow(object):
 
         self.exchange_v_layout.addWidget(self.exchange_rate_label)
 
-        self.exchange_rate = QLabel(self.centralwidget)
-        self.exchange_rate.setObjectName(u"exchange_rate")
-        sizePolicy.setHeightForWidth(self.exchange_rate.sizePolicy().hasHeightForWidth())
-        self.exchange_rate.setSizePolicy(sizePolicy)
+        self.exchange_rate_amount = QLabel(self.centralwidget)
+        self.exchange_rate_amount.setObjectName(u"exchange_rate_amount")
+        sizePolicy.setHeightForWidth(self.exchange_rate_amount.sizePolicy().hasHeightForWidth())
+        self.exchange_rate_amount.setSizePolicy(sizePolicy)
         font1 = QFont()
         font1.setFamilies([u"Avenir"])
-        font1.setPointSize(32)
+        font1.setPointSize(35)
         font1.setBold(True)
-        self.exchange_rate.setFont(font1)
-        self.exchange_rate.setAlignment(Qt.AlignCenter)
+        self.exchange_rate_amount.setFont(font1)
+        self.exchange_rate_amount.setAlignment(Qt.AlignCenter)
 
-        self.exchange_v_layout.addWidget(self.exchange_rate)
+        self.exchange_v_layout.addWidget(self.exchange_rate_amount)
 
 
         self.verticalLayout.addLayout(self.exchange_v_layout)
@@ -115,7 +120,7 @@ class Ui_MainWindow(object):
 
         self.amount_layout.addWidget(self.amount_line_edit)
 
-        self.verticalSpacer_4 = QSpacerItem(20, 20, QSizePolicy.Minimum, QSizePolicy.Fixed)
+        self.verticalSpacer_4 = QSpacerItem(20, 30, QSizePolicy.Minimum, QSizePolicy.Fixed)
 
         self.amount_layout.addItem(self.verticalSpacer_4)
 
@@ -131,7 +136,7 @@ class Ui_MainWindow(object):
 
         self.from_to_label_layout.addWidget(self.from_label)
 
-        self.horizontalSpacer_2 = QSpacerItem(40, 20, QSizePolicy.Fixed, QSizePolicy.Minimum)
+        self.horizontalSpacer_2 = QSpacerItem(30, 20, QSizePolicy.Fixed, QSizePolicy.Minimum)
 
         self.from_to_label_layout.addItem(self.horizontalSpacer_2)
 
@@ -155,11 +160,13 @@ class Ui_MainWindow(object):
         self.combo_from.setFont(font4)
         self.combo_from.setCursor(QCursor(Qt.PointingHandCursor))
         self.combo_from.setStyleSheet(u"")
-        self.combo_from.setMaxCount(50)
+        self.combo_from.setMaxVisibleItems(5)
+        self.combo_from.setMaxCount(40)
+        self.combo_from.setIconSize(QSize(22, 22))
 
         self.combo_box_layout.addWidget(self.combo_from)
 
-        self.horizontalSpacer = QSpacerItem(40, 20, QSizePolicy.Fixed, QSizePolicy.Minimum)
+        self.horizontalSpacer = QSpacerItem(30, 20, QSizePolicy.Fixed, QSizePolicy.Minimum)
 
         self.combo_box_layout.addItem(self.horizontalSpacer)
 
@@ -168,7 +175,9 @@ class Ui_MainWindow(object):
         self.combo_to.setFont(font4)
         self.combo_to.setCursor(QCursor(Qt.PointingHandCursor))
         self.combo_to.setStyleSheet(u"")
-        self.combo_to.setMaxCount(50)
+        self.combo_to.setMaxVisibleItems(5)
+        self.combo_to.setMaxCount(40)
+        self.combo_to.setIconSize(QSize(22, 22))
 
         self.combo_box_layout.addWidget(self.combo_to)
 
@@ -189,11 +198,7 @@ class Ui_MainWindow(object):
         font5.setBold(True)
         self.convert_button.setFont(font5)
         self.convert_button.setCursor(QCursor(Qt.PointingHandCursor))
-        self.convert_button.setStyleSheet(u"border: none;\n"
-"border-radius: 5px;\n"
-"background: rgb(10, 132, 255);\n"
-"color: white;\n"
-"height: 35px;")
+        self.convert_button.setStyleSheet(u"")
 
         self.verticalLayout.addWidget(self.convert_button)
 
@@ -217,9 +222,10 @@ class Ui_MainWindow(object):
     def retranslateUi(self, MainWindow):
         MainWindow.setWindowTitle(QCoreApplication.translate("MainWindow", u"Currency Exchange", None))
         self.exchange_rate_label.setText(QCoreApplication.translate("MainWindow", u"Exchange Rate", None))
-        self.exchange_rate.setText(QCoreApplication.translate("MainWindow", u"$27.77", None))
+        self.exchange_rate_amount.setText(QCoreApplication.translate("MainWindow", u"$27.77", None))
         self.amount_label.setText(QCoreApplication.translate("MainWindow", u"Amount", None))
-        self.amount_line_edit.setText(QCoreApplication.translate("MainWindow", u"10000", None))
+        self.amount_line_edit.setText("")
+        self.amount_line_edit.setPlaceholderText(QCoreApplication.translate("MainWindow", u"Enter your amount", None))
         self.from_label.setText(QCoreApplication.translate("MainWindow", u"From", None))
         self.to_label.setText(QCoreApplication.translate("MainWindow", u"To", None))
         self.convert_button.setText(QCoreApplication.translate("MainWindow", u"CONVERT", None))
